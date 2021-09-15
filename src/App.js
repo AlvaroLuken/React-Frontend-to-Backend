@@ -13,7 +13,7 @@ const InputBox = styled.div`
 
 export default function App() {
   React.useEffect(() => {
-    //checkIfWalletIsConnected();
+    // put a function here that you want to run on load!
   }, []);
 
 
@@ -23,6 +23,8 @@ export default function App() {
     console.log(`4. The message printed in the back-end is: ${message}`)
     console.log('Use is it an ethers.js query!')
   }
+
+  // write more functions here, before the return()
 
   
   
@@ -54,13 +56,13 @@ export default function App() {
 
        
 
-        {/* {allWaves.map((wave, index) => {
+        {/* {someArray.map((element, index) => {
           return (
             <div style={{backgroundColor: "green", marginTop: "16px", padding: "8px"}}>
-              <div key={wave.index}>Address: {wave.address}</div>
-              <div key={wave.index}>Time: {wave.timestamp.toString()}</div>
-              <div key={wave.index}>Message: {wave.message}</div>
-              <div key={wave.index}>Uri: {wave.uri}</div>
+              <div key={element.index}>Address: {element.address}</div>
+              <div key={element.index}>Time: {element.timestamp.toString()}</div>
+              <div key={element.index}>Message: {element.message}</div>
+              <div key={element.index}>Uri: {element.uri}</div>
               <img src="https://ipfs.io/ipfs/QmdUXVtRxKhdVhjPXCUxZGyXNHn5e2oS6pt8enPXo7X4Hk"/>
             </div>
           )

@@ -12,8 +12,10 @@ const InputBox = styled.div`
 
 
 export default function App() {
+  const [name, setName] = React.useState();
   React.useEffect(() => {
     // put a function here that you want to run on load!
+    displayBackendData()
   }, []);
 
 
@@ -22,6 +24,16 @@ export default function App() {
     const message = document.getElementById("message").value;
     console.log(`4. The message printed in the back-end is: ${message}`)
     console.log('Use is it an ethers.js query!')
+  }
+
+  const displayBackendData = () => {
+    // 5. To pass data from backend to frontend
+    const backendData = "Hello, I am a string fetched from the backend on line 31"
+    // use the React useState() hook
+    // to set the data
+    setName(backendData);
+
+    // then reference it in returned HTML, ie: line 75
   }
 
   // write more functions here, before the return()
@@ -60,6 +72,7 @@ export default function App() {
             <ul>
               <li><Text fontSize="6xl">After clicking, check the browser console to see the delivered message.</Text></li>
               <li><Text fontSize="6xl">Logging of message comes from myFunction in App.js</Text></li>
+              <li><Text fontSize="6xl">{name}</Text></li>
             </ul>
           </Stack>
         </Center>

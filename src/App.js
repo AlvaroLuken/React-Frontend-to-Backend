@@ -46,12 +46,12 @@ export default function App() {
           <Text fontSize="6xl">This is a good way to send messages from front-end to back-end</Text>
           <div styles="height:8px"></div>
           <label>
-            1. What is your message to send to the server?
+            1. Type a message to send to the server here...
             <input id="message" type="text"/>
           </label>
         </form>
         <button className="button" onClick={myFunction}>
-          2. Send this message to the back-end through the onClick
+          2. Send the message to the back-end through this button's onClick
         </button>
 
        

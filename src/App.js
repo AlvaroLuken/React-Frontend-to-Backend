@@ -1,34 +1,32 @@
 import React from "react";
 import { ethers } from "ethers";
 import './App.css';
-import styled from "styled-components";
 import { Input, Text, Center, Stack } from "@chakra-ui/react"
 
-const InputBox = styled.div`
-  margin: 2rem;
-  background-color: purple;
-  height: 16px;
-`
-
-
 export default function App() {
-  const [name, setName] = React.useState();
+  const [name, setName] = React.useState("");
+  const [message, setMessage] = React.useState("");
   React.useEffect(() => {
-    // put a function here that you want to run on load!
+    // put a function here that you want to run every time the page loads!
+    // that is what the useEffect hook is for!
     displayBackendData()
   }, []);
 
 
   const myFunction = () => {
-    // 3. this receives the message, store it in a div and do whatever you like!
-    const message = document.getElementById("message").value;
+    console.log("3. We've got hooks rigged up to our message variable! So the value is accessible pretty much anywhere via the message variable!");
+    
     console.log(`4. The message printed in the back-end is: ${message}`)
     console.log('Use is it an ethers.js query!')
+
+
+    console.log("Fun Fact: Your message is sent to the backend one character at a time because it is hooked up to onChange()");
+    console.log("The onClick is mainly useful to trigger more logic, but your message is accessible by the backend 100% of the time!")
   }
 
   const displayBackendData = () => {
     // 5. To pass data from backend to frontend
-    const backendData = "Hello, I am a string fetched from the backend on line 31"
+    const backendData = "Hello, I am a string fetched from the backend on line 31 (using hooks)"
     // use the React useState() hook
     // to set the data
     setName(backendData);
@@ -49,9 +47,12 @@ export default function App() {
         </div>
 
         <div className="sub-header" styles="margin-bottom: 32px;">
-        Hello, I am a string on line 40 in App.js!
+        Hello, I am a string on line 52 in App.js!
         </div>
-        <div styles="height:32px"></div>
+        <div className="sub-header" styles="margin-bottom: 32px;">
+        Make sure you have the Developer Tools 'Console' open when interacting with this page to get the full learning experience!
+        </div>
+        <div styles="height:16px"></div>
         
 
         <form onSubmit={null} styles="margin-top: 32px;">
@@ -61,7 +62,7 @@ export default function App() {
           <div styles="height:8px"></div>
           <label>
             1. Type a message to send to the server here...
-            <Input id="message" type="text"/>
+            <Input id="message" type="text" onChange={e => setMessage(e.target.value)}/>
           </label>
         </form>
         <button className="button" onClick={myFunction}>
@@ -72,26 +73,11 @@ export default function App() {
             <ul>
               <li><Text fontSize="6xl">After clicking, check the browser console to see the delivered message.</Text></li>
               <li><Text fontSize="6xl">Logging of message comes from myFunction in App.js</Text></li>
-              <li><Text fontSize="6xl">{name}</Text></li>
+              <li><Text fontSize="6xl">Open your Chrome developer tools for the next steps!</Text></li>
             </ul>
+            <Text fontSize="32px" align="center">{name}</Text>
           </Stack>
         </Center>
-        
-
-
-       
-
-        {/* {someArray.map((element, index) => {
-          return (
-            <div style={{backgroundColor: "green", marginTop: "16px", padding: "8px"}}>
-              <div key={element.index}>Address: {element.address}</div>
-              <div key={element.index}>Time: {element.timestamp.toString()}</div>
-              <div key={element.index}>Message: {element.message}</div>
-              <div key={element.index}>Uri: {element.uri}</div>
-              <img src="https://ipfs.io/ipfs/QmdUXVtRxKhdVhjPXCUxZGyXNHn5e2oS6pt8enPXo7X4Hk"/>
-            </div>
-          )
-        })} */}
       </div>
     </div>
   );
